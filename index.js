@@ -34,7 +34,7 @@ restService.post("/user", (req, res) => {
     const userdb = new User();
     
     userdb.phone_number = //req.body.phone_number;
-        req.body.queryResult.parameters['phone-number'];
+        req.body.queryResult.parameters['phone_number'];
 
     //userdb.userName = //req.body.userName;
     //    req.body.queryResult.parameters['names'];
@@ -57,3 +57,6 @@ restService.post("/user", (req, res) => {
     }
     return res.json(responseObj);
 });
+
+const port  = process.env.PORT || 4000;
+restService.listen(port, () => console.log("listening to port number 4000"));
