@@ -30,23 +30,17 @@ restService.use(
 restService.use(bodyParser());
 restService.use(bodyParser.json());
 
-restService.post("/number", (req, res) => {
+restService.post("/user", (req, res) => {
     const userdb = new User();
     
     userdb.phone_number = //req.body.phone_number;
-        req.body.result &&
-        req.body.result.parameters &&
-        req.body.result.parameters.phone_number;
+        req.body.queryResult.parameters['phone_number'];
 
     userdb.userName = //req.body.userName;
-        req.body.result &&
-        req.body.result.parameters &&
-        req.body.result.parameters.name;
+        req.body.queryResult.parameters['names'];
 
     userdb.age = //req.body.age;
-        req.body.result &&
-        req.body.result.parameters &&
-        req.body.result.parameters.age;
+        req.body.queryResult.parameters['age'];
 
     
     userdb.save().then(userSaved => {
