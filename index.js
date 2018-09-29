@@ -30,7 +30,7 @@ restService.use(
 restService.use(bodyParser());
 restService.use(bodyParser.json());
 
-restService.post("/user", (req, res) => {
+/*restService.post("/user", (req, res) => {
     const userdb = new User();
     
     userdb.phone_number = //req.body.phone_number;
@@ -56,6 +56,17 @@ restService.post("/user", (req, res) => {
                             "source": ""
     }
     return res.json(responseObj);
+});*/
+
+
+restService.post("/webhook", (req, res) => {
+    var number = req.body.queryResult.parameters.phone_number;
+    let resObj = {
+                "fulfillmentText" : 'given number is'+number,
+                "fulfillmentMessages" : [{"text":{"text" : [w]}}],
+                "source": "https://codesmith.herokuapp.com/webhook"
+    }
+    return res.json(resObj);
 });
 
 const port  = process.env.PORT || 4000;
