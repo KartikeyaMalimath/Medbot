@@ -3,8 +3,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-var router = express.Router()
+// var router = express.Router()
 const User = require('./userSchema');
+mongoose.connect('mongodb://kartikeya:km123456@ds115613.mlab.com:15613/medbot', {useMongoClient: true}, function(err){
+    if(err) {
+        console.log('Some problem with the connection ' +err);
+    } else {
+        console.log('The Mongoose connection is ready');
+    }
+})
 
 const restService = express();
 var listener = restService.listen(8888, function(){
@@ -13,12 +20,8 @@ var listener = restService.listen(8888, function(){
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/medbot', {
-  useNewUrlParser: true
-}, () => {
-  console.log('connected to database')
-  }
-)
+    //mongoose.connect('mongodb://localhost:27017/medbot', {
+   
 
 restService.use(
     bodyParser.urlencoded({
@@ -31,22 +34,22 @@ restService.use(bodyParser.json());
 restService.post("/number", (req, res) => {
     const userdb = new User();
     
-    userdb.phone_number = //req.body.phone_number;
-        req.body.result &&
-        req.body.result.parameters &&
-        req.body.result.parameters.phone_number;
+    userdb.phone_number = req.body.phone_number;
+        //req.body.result &&
+        //req.body.result.parameters &&
+        //req.body.result.parameters.phone_number;
 
-    userdb.userName = //req.body.userName;
-        req.body.result &&
-        req.body.result.parameters &&
-        req.body.result.parameters.name;
+    userdb.userName = req.body.userName;
+        //req.body.result &&
+        //req.body.result.parameters &&
+        //req.body.result.parameters.name;
 
-    userdb.age = //req.body.age;
-        req.body.result &&
-        req.body.result.parameters &&
-        req.body.result.parameters.age;
+    userdb.age = req.body.age;
+        //req.body.result &&
+        //req.body.result.parameters &&
+        //req.body.result.parameters.age;
 
-    //User.findone({number : number}).then(user =>)
+    
     userdb.save().then(userSaved => {
         res.send("user saved");
     }).catch(err =>{
