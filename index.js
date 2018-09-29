@@ -14,9 +14,9 @@ mongoose.connect('mongodb://kartikeya:km123456@ds115613.mlab.com:15613/medbot', 
 })
 
 const restService = express();
-var listener = restService.listen(8888, function(){
-    console.log('Listening on port ' + listener.address().port); //Listening on port 8888
-});
+//var listener = restService.listen(8888, function(){
+//    console.log('Listening on port ' + listener.address().port); //Listening on port 8888
+//});
 
 
 mongoose.Promise = global.Promise;
