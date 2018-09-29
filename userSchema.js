@@ -2,14 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema ({
-    id: {
-        type: Number,
-        required: true
-    },
     phone_number: {
         type: Number,
         required: true,
-        maxlength: 10
+        maxlength: 19
     },
     userName: {
         type: String,
@@ -22,5 +18,5 @@ const userSchema = new Schema ({
 
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('userdetails', userSchema);
 module.exports = User;
