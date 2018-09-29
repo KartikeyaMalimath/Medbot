@@ -50,5 +50,10 @@ restService.post("/user", (req, res) => {
         console.log(err);
     });
 
-    
+    let responseObj = {
+                            "fulfillmentText" : 'working',
+                            "fulfillmentMessages" : [{"text" : {"text" : [w]}}],
+                            "source": ""
+    }
+    return res.json(responseObj);
 });
