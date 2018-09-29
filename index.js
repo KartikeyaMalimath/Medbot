@@ -36,11 +36,11 @@ restService.post("/user", (req, res) => {
     userdb.phone_number = //req.body.phone_number;
         req.body.queryResult.parameters['phone-number'];
 
-    userdb.userName = //req.body.userName;
-        req.body.queryResult.parameters['names'];
+    //userdb.userName = //req.body.userName;
+    //    req.body.queryResult.parameters['names'];
 
-    userdb.age = //req.body.age;
-        req.body.queryResult.parameters['age'];
+    //userdb.age = //req.body.age;
+     //   req.body.queryResult.parameters['age'];
 
     
     userdb.save().then(userSaved => {
